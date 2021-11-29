@@ -18,6 +18,9 @@ class Main extends PluginBase implements Listener{
        public function onChatEvent(PlayerChatEvent $event){
            $words = ["hello", "hi"];
            $msg = $event->getMessage();
+           if($msg[0] === "/"){
+               return;
+           }
            foreach($words as $word){
                if(preg_match('/\b'.$word.'\b/i', $msg)){
                    $event->setMessage(TF::RED. $msg);
